@@ -38,6 +38,9 @@ const mutations = {
             localStorage.setItem('weather', JSON.stringify(state.weather))
         }
     },
+    reorder_city(state, payload) {
+        localStorage.setItem('weather', JSON.stringify(payload))
+    },
     remove_city(state, id_delete) {
         state.weather = state.weather.filter(item => item.id !== id_delete);
         localStorage.setItem('weather', JSON.stringify(state.weather))

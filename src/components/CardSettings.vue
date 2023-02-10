@@ -18,8 +18,6 @@
             replace-direction="vertical"
 
             @sortend="sortend($event, listData)"
-
-            @real-click="click"
         >
 
             <img
@@ -29,7 +27,7 @@
              <p>{{ item.name }}</p>
                 <img
                     :src="require('@/assets/images/trash.svg')" alt=""
-                    @click="$emit('delete_card', item.id)"
+                    @click="delete_card(item.id, index)"
                     class="settings__trash"
                 >
 
@@ -57,10 +55,7 @@ export default {
         };
     },
     methods: {
-        click (e) {
-
-        },
-        sortend (e, list) {
+         sortend (e, list) {
             const { oldIndex, newIndex } = e
             this.rearrange(list, oldIndex, newIndex)
         },
@@ -68,11 +63,17 @@ export default {
             if (oldIndex > newIndex) {
                 array.splice(newIndex, 0, array[oldIndex])
                 array.splice(oldIndex + 1, 1)
+                this.$store.commit('reorder_city', array)
             }
             else {
                 array.splice(newIndex + 1, 0, array[oldIndex])
                 array.splice(oldIndex, 1)
+                this.$store.commit('reorder_city', array)
             }
+        },
+        delete_card(id, index) {
+            this.listData.splice(index, 1);
+            this.$emit('delete_card', id);
         }
     }
 }

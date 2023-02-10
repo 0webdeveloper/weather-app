@@ -10,18 +10,18 @@
 
         <div class="weather-card__body">
             <img
-                :src="'http://openweathermap.org/img/wn/' + city.icon + '@2x.png'" alt=""
+                :src="'http://openweathermap.org/img/wn/' + city.icon + '@4x.png'" alt=""
                 class="weather-body__icon"
             >
             <p class="weather-body__temp">{{ Math.round(city.temp) }}°C</p>
         </div>
         <p class="weather-body__feels-like">
-            Feels like {{ city.feels_like }}°C
+            Feels like <b>{{ city.feels_like }}°C</b>
         </p>
         <p class="weather-body__status">{{ city.description }}</p>
 
-        <p class="">Humidity {{ city.humidity }}</p>
-        <p>Wind speed{{ city.wind }}</p>
+        <p class="">Humidity - <b>{{ city.humidity }}</b></p>
+        <p>Wind speed - <b>{{ city.wind }}</b></p>
 
         <card-settings
             class="card-settings"
@@ -77,7 +77,7 @@ export default {
     }
 }
 .weather-body__icon {
-    width: 100%;
+    width: 50%;
 }
 .weather-body__temp {
     font-size: 3.5rem;

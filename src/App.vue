@@ -71,9 +71,7 @@ export default {
     margin: 0;
     box-sizing: border-box;
 }
-body {
-    line-height: 1.5;
-}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -81,6 +79,7 @@ body {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    line-height: 2;
 }
 .container {
     max-width: 1200px;

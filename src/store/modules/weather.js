@@ -1,14 +1,10 @@
 const state = {
     api_key: '4cb2a06b3d6eddb795aac575a32260c4',
-    // city: JSON.parse(localStorage.getItem('city') || '[]'),
     weather: JSON.parse(localStorage.getItem('weather') || '[]'),
     warning: false,
     coords: ''
 };
 const getters = {
-    // city_name(state) {
-    //     return state.city;
-    // },
     get_weather(state) {
         return state.weather;
     },

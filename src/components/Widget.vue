@@ -29,11 +29,11 @@
             @delete_card="delete_card"
             @closeSetting="showSettings"/>
     </div>
+
 </template>
 
 <script>
 import CardSettings from '@/components/CardSettings.vue'
-
 export default {
     name: "Widget",
     data() {
@@ -52,7 +52,7 @@ export default {
             this.isVisible = !this.isVisible;
         },
         delete_card(id) {
-            this.$store.commit('remove_city', id);
+            this.$store.commit('weather/remove_city', id);
         }
     }
 }
@@ -60,7 +60,7 @@ export default {
 
 <style scoped lang="scss">
 .weather-card {
-    width: 300px;
+    //width: 300px;
     position: relative;
     overflow: hidden;
     margin-top: 50px;
@@ -68,6 +68,7 @@ export default {
     padding: 30px 20px;
     border-radius: 10px;
     box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px 0 rgba(0,0,0,0.20);
+    min-height: 450px;
     &__title {
         margin-top: 25px;
     }
@@ -80,9 +81,10 @@ export default {
     width: 50%;
 }
 .weather-body__temp {
+    font-family: 'Oswald', sans-serif;
     font-size: 3.5rem;
     white-space: nowrap;
-    font-weight: 600;
+    font-weight: 500;
 }
 .gear-menu {
     max-width: 25px;
@@ -90,6 +92,10 @@ export default {
     right: 10px;
     top: 10px;
     cursor: pointer;
+    transition: transform .3s ease-in-out;
+    &:hover{
+        transform: rotate(30deg);
+    }
 }
 .card-settings {
     position: absolute;

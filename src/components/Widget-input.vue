@@ -21,9 +21,8 @@ export default {
     },
     methods: {
         send_new_city(e) {
-            // if (e.key == 'Enter' && this.city_name !== '') {
             if (this.city_name !== '') {
-                this.$store.dispatch('set_new_city', this.city_name);
+                this.$store.dispatch('weather/set_new_city', this.city_name);
                 this.city_name = '';
             }
         }

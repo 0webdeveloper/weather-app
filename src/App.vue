@@ -1,7 +1,13 @@
 <template>
     <div id="app">
-        <div class="container">
-        <h1>name count {{get_weather.length}} /  weather count{{get_weather.length}}</h1>
+        <div class="container" >
+            <div v-if="!isLoad">
+                     <h1>name count {{get_weather.length}} /  weather count{{get_weather.length}}</h1>
+            </div>
+            <div v-else>
+                <h1>Идет загрузка .....</h1>
+            </div>
+
         <div class="container-cards">
         <widget
             v-for="city in get_weather"
@@ -26,7 +32,7 @@
 
 <script>
 import Widget from "@/components/Widget.vue";
-import {mapGetters, mapActions} from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 // import Board from '@/components/Board.vue';
 // import Card from '@/components/Card.vue'
 
@@ -50,15 +56,25 @@ export default {
         // Sort
     },
     computed: {
-        ...mapGetters(['get_weather', 'watch_warning'])
+        ...mapState({
+            isLoad: state => state.weather.isLoad,
+            api_key: state => state.weaher.api_key,
+            weather: state => state.weaher.weather,
+            logic: state => state.weaher.logic,
+            coords: state => state.weaher.coords
+        }),
+        ...mapGetters({
+            get_weather: 'weather/get_weather',
+            watch_warning: 'weather/watch_warning'
+        })
     },
     methods: {
-        ...mapActions(['fetch_forecast', 'fetch_coords'])
+        ...mapActions({
+            fetch_forecast: 'weather/fetch_forecast',
+            fetch_coords: 'weather/fetch_coords'
+        })
     },
     async mounted() {
-
-    },
-    async beforeMount() {
         await this.fetch_coords();
         await this.fetch_forecast();
     }

@@ -1,11 +1,8 @@
 <template>
     <div id="app">
         <div class="container" >
-            {{isLoad}}
-            {{api_key}}
-            {{weather}}
             <div v-if="!isLoad">
-                     <h1>name count {{get_weather.length}} /  weather count{{get_weather.length}}</h1>
+                     <h1>Виджет погоды</h1>
             </div>
             <div v-else>
                 <h1>Идет загрузка .....</h1>
@@ -17,17 +14,6 @@
             :key="city.id"
             :city="city"
             />
-
-            <!-- <Board id="board-1">
-                <Card
-                    v-for="card in sortList"
-                    :id=card.id
-                    :key="card.id"
-                    draggable="true"
-                >
-                    <p>{{card.name}}</p>
-                </Card>
-            </Board> -->
         </div>
         </div>
     </div>
@@ -36,39 +22,18 @@
 <script>
 import Widget from "@/components/Widget.vue";
 import { mapState, mapGetters, mapActions } from 'vuex'
-// import Board from '@/components/Board.vue';
-// import Card from '@/components/Card.vue'
-
-
 
 export default {
     name: 'App',
-    // data() {
-    //     return {
-    //         sortList:[
-    //             {id: 1, name:'Card one'},
-    //             {id: 2, name:'Cart two'},
-    //             {id: 3, name:'Card three'}
-    //         ]
-    //     }
-    // },
     components: {
-        Widget,
-        // Card,
-        // Board,
-        // Sort
+        Widget
     },
     computed: {
         ...mapState({
             isLoad: state => state.weather.isLoad,
-            api_key: state => state.weather.api_key,
-            weather: state => state.weather.weather,
-            logic: state => state.weather.logic,
-            coords: state => state.weather.coords
         }),
         ...mapGetters({
-            get_weather: 'weather/get_weather',
-            watch_warning: 'weather/watch_warning'
+            get_weather: 'weather/get_weather'
         })
     },
     methods: {

@@ -1,7 +1,6 @@
 const state = () => ({
   api_key: '4cb2a06b3d6eddb795aac575a32260c4',
   weather: JSON.parse(localStorage.getItem('weather') || '[]'),
-  logic: true,
   isLoad: false,
   coords: [],
 });
@@ -9,9 +8,6 @@ const state = () => ({
 const getters = {
   watch_city_length(state) {
     return state.weather.length
-  },
-  change_logic(state) {
-    return state.logic
   },
   get_weather(state) {
     return state.weather

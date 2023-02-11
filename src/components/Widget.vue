@@ -23,11 +23,13 @@
         <p class="">Humidity - <b>{{ city.humidity }}</b></p>
         <p>Wind speed - <b>{{ city.wind }}</b></p>
 
+      <transition>
         <card-settings
             class="card-settings"
             v-if="isVisible"
             @delete_card="delete_card"
             @closeSetting="showSettings"/>
+      </transition>
     </div>
 
 </template>
@@ -103,5 +105,15 @@ export default {
     right:0;
     width: 100%;
     height: 100%;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

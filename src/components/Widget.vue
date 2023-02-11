@@ -23,12 +23,14 @@
         <p class="">Humidity - <b>{{ city.humidity }}</b></p>
         <p>Wind speed - <b>{{ city.wind }}</b></p>
 
-      <transition>
+      <transition name="slide-fade">
+
         <card-settings
             class="card-settings"
             v-if="isVisible"
             @delete_card="delete_card"
             @closeSetting="showSettings"/>
+
       </transition>
     </div>
 
@@ -62,7 +64,6 @@ export default {
 
 <style scoped lang="scss">
 .weather-card {
-    //width: 300px;
     position: relative;
     overflow: hidden;
     margin-top: 50px;
@@ -106,14 +107,19 @@ export default {
     width: 100%;
     height: 100%;
 }
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
+// animation for <transition>
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
 }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
+.slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
+}
+
 </style>

@@ -37,7 +37,7 @@
         class="settings__trash"
       />
     </sortable>
-    <transition>
+    <transition name="fade">
       <div class="settings__footer" v-if="watch_city_length != 3">
         <p>Add location:</p>
         <widget-input />
@@ -146,13 +146,16 @@ export default {
   justify-content: flex-start;
 }
 
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
+
+
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
 }
 </style>

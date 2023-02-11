@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <div class="container" >
+            {{isLoad}}
+            {{api_key}}
+            {{weather}}
             <div v-if="!isLoad">
                      <h1>name count {{get_weather.length}} /  weather count{{get_weather.length}}</h1>
             </div>
@@ -58,10 +61,10 @@ export default {
     computed: {
         ...mapState({
             isLoad: state => state.weather.isLoad,
-            api_key: state => state.weaher.api_key,
-            weather: state => state.weaher.weather,
-            logic: state => state.weaher.logic,
-            coords: state => state.weaher.coords
+            api_key: state => state.weather.api_key,
+            weather: state => state.weather.weather,
+            logic: state => state.weather.logic,
+            coords: state => state.weather.coords
         }),
         ...mapGetters({
             get_weather: 'weather/get_weather',

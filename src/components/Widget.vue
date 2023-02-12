@@ -5,9 +5,8 @@
             class="gear-menu" alt=""
             @click="showSettings"
         />
-
         <h2 class="weather-card__title">{{ city.name }}, {{city.country}}</h2>
-
+        <h4> {{timestamp}} - {{ dataToday }}</h4>
         <div class="weather-card__body">
             <img
                 :src="'http://openweathermap.org/img/wn/' + city.icon + '@4x.png'" alt=""
@@ -23,14 +22,12 @@
         <p class="">Humidity - <b>{{ city.humidity }}</b></p>
         <p>Wind speed - <b>{{ city.wind }}</b></p>
 
-      <transition name="slide-fade">
-
+      <transition name="fade">
         <card-settings
             class="card-settings"
             v-if="isVisible"
             @delete_card="delete_card"
             @closeSetting="showSettings"/>
-
       </transition>
     </div>
 
@@ -42,7 +39,9 @@ export default {
     name: "Widget",
     data() {
         return {
-            isVisible: false,
+          isVisible: false,
+          dataToday: '',
+          timestamp: ''
         }
     },
     components: {CardSettings},
@@ -52,13 +51,38 @@ export default {
         }
     },
     methods: {
-        showSettings() {
-            this.isVisible = !this.isVisible;
-        },
-        delete_card(id) {
-            this.$store.commit('weather/remove_city', id);
-        }
-    }
+      showSettings() {
+        this.isVisible = !this.isVisible;
+      },
+      delete_card(id) {
+        this.$store.commit('weather/remove_city', id);
+      },
+      getDayOfWeek() {
+        const weekDays = [
+          'Sunday',
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ]
+        return weekDays[new Date().getDay()]
+      },
+      getNow() {
+        const date = new Date()
+        const result = date.toLocaleDateString({
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        })
+        this.timestamp = result;
+      }
+    },
+  mounted() {
+    this.dataToday = this.getDayOfWeek();
+    this.getNow();
+  }
 }
 </script>
 
@@ -108,18 +132,14 @@ export default {
     height: 100%;
 }
 // animation for <transition>
-.slide-fade-enter-active {
-    transition: all 0.3s ease-out;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 
-.slide-fade-leave-active {
-    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-    transform: translateX(20px);
-    opacity: 0;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 </style>

@@ -132,6 +132,7 @@ export default {
 }
 
 .settings > *.dragging {
+  width: calc(100% - 30px);
 }
 .drag-sortable {
   margin-top: 20px;
@@ -145,8 +146,6 @@ export default {
   align-items: center;
   justify-content: flex-start;
 }
-
-
 
 
 .fade-enter-active,

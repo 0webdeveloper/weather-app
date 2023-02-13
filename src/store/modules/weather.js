@@ -2,7 +2,7 @@ const state = () => ({
   api_key: '4cb2a06b3d6eddb795aac575a32260c4',
   weather: JSON.parse(localStorage.getItem('weather') || '[]'),
   isLoad: false,
-  coords: [],
+  coords: []
 });
 
 const getters = {

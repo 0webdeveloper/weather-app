@@ -2,7 +2,6 @@
     <!-- <input class="weather-input" type="text" v-model.trim="city_name" @keydown="send_new_city"> -->
     <div class="widget-input-wrap">
         <input class="weather-input" type="text" v-model.trim="city_name" @keydown.enter="send_new_city">
-
         <img
             :src="require('@/assets/images/enter.svg')" alt=""
             class="enter-btn"
@@ -22,6 +21,7 @@ export default {
     methods: {
         send_new_city(e) {
             if (this.city_name !== '') {
+                this.$emit('closeSettings');
                 this.$store.dispatch('weather/set_new_city', this.city_name);
                 this.city_name = '';
             }

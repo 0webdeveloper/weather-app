@@ -88,6 +88,7 @@ export default {
 
 <style scoped lang="scss">
 .weather-card {
+    background-color: #fff;
     position: relative;
     overflow: hidden;
     margin-top: 50px;
@@ -98,6 +99,8 @@ export default {
     min-height: 450px;
     &__title {
         margin-top: 25px;
+        font-size: 2.2rem;
+        font-weight: 900;
     }
     &__body {
         display: flex;

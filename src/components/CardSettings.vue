@@ -38,9 +38,9 @@
       />
     </sortable>
     <transition name="fade">
-      <div class="settings__footer" v-if="watch_city_length != 3">
+      <div class="settings__footer" v-if="watch_city_length !== 3">
         <p>Add location:</p>
-        <widget-input />
+        <widget-input @closeSettings="$emit('closeSetting')"/>
       </div>
     </transition>
   </div>
@@ -58,8 +58,7 @@ export default {
   },
   data() {
     return {
-      dragData: {},
-    //   listData: this.get_weather,
+      dragData: {}
        }
   },
   computed: {
@@ -92,7 +91,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .settings {
   width: 300px;
   height: 400px;

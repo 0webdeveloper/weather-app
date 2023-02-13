@@ -2,10 +2,10 @@
     <div id="app">
         <div class="container" >
             <div v-if="!isLoad">
-                     <h1>Виджет погоды</h1>
+                <h2 class="widget-title">Виджет погоды</h2>
             </div>
             <div v-else>
-                <h1>Идет загрузка .....</h1>
+                <h2 class="widget-title">Идет загрузка .....</h2>
             </div>
 
         <div class="container-cards">
@@ -49,26 +49,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-    line-height: 2;
-}
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+<style scoped lang="scss">
+.widget-title {
+    font-size: 2rem;
+    font-weigth: 700;
 }
 .container-cards {
     display: grid;

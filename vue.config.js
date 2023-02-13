@@ -11,7 +11,7 @@ module.exports = defineConfig({
 
   outputDir: './static/widget-app.loc',
   publicPath: process.env.NODE_ENV === 'production'
-      ? 'static/widget-app.loc' //static/dist
+      ? '' //static/dist
       : '/',
 
   devServer: {

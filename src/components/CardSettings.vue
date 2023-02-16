@@ -1,3 +1,4 @@
+<!-- eslint-disable max-len -->
 <template>
   <div class="settings">
     <div class="settings__header">
@@ -40,12 +41,22 @@
 
       <p>{{ item.name }}</p>
 
-    <svg 
-    @click="delete_card(item.id, index)"
+      <svg
+        @click="delete_card(item.id, index)"
         class="settings__trash"
-    fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"></path>
-    </svg>
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+        ></path>
+      </svg>
     </sortable>
     <transition name="fade">
       <div class="settings__footer" v-if="watch_city_length !== 3">
@@ -57,9 +68,10 @@
 </template>
 
 <script>
-import Sortable from 'vue-drag-sortable'
-import WidgetInput from '@/components/Widget-input.vue'
-import { mapGetters } from 'vuex'
+// eslint-disable-next-line import/no-unresolved
+import Sortable from 'vue-drag-sortable';
+import WidgetInput from '@/components/Widget-input.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -69,7 +81,7 @@ export default {
   data() {
     return {
       dragData: {},
-    }
+    };
   },
   computed: {
     ...mapGetters({
@@ -79,27 +91,27 @@ export default {
   },
   methods: {
     sortend(e, list) {
-      const { oldIndex, newIndex } = e
-      this.rearrange(list, oldIndex, newIndex)
+      const { oldIndex, newIndex } = e;
+      this.rearrange(list, oldIndex, newIndex);
     },
     rearrange(array, oldIndex, newIndex) {
       if (oldIndex > newIndex) {
-        array.splice(newIndex, 0, array[oldIndex])
-        array.splice(oldIndex + 1, 1)
-        this.$store.commit('weather/reorder_city', array)
+        array.splice(newIndex, 0, array[oldIndex]);
+        array.splice(oldIndex + 1, 1);
+        this.$store.commit('weather/reorder_city', array);
       } else {
-        array.splice(newIndex + 1, 0, array[oldIndex])
-        array.splice(oldIndex, 1)
-        this.$store.commit('weather/reorder_city', array)
+        array.splice(newIndex + 1, 0, array[oldIndex]);
+        array.splice(oldIndex, 1);
+        this.$store.commit('weather/reorder_city', array);
       }
-        this.$emit('closeSetting')
+      this.$emit('closeSetting');
     },
     delete_card(id, index) {
-      this.listData.splice(index, 1)
-      this.$emit('delete_card', id)
+      this.listData.splice(index, 1);
+      this.$emit('delete_card', id);
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

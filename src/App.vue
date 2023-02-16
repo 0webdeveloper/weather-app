@@ -20,33 +20,33 @@
 </template>
 
 <script>
-import Widget from "@/components/Widget.vue";
-import { mapState, mapGetters, mapActions } from 'vuex'
+import Widget from '@/components/Widget.vue';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
-    name: 'App',
-    components: {
-        Widget
-    },
-    computed: {
-        ...mapState({
-            isLoad: state => state.weather.isLoad,
-        }),
-        ...mapGetters({
-            get_weather: 'weather/get_weather'
-        })
-    },
-    methods: {
-        ...mapActions({
-            fetch_forecast: 'weather/fetch_forecast',
-            fetch_coords: 'weather/fetch_coords'
-        })
-    },
-    async mounted() {
-        await this.fetch_coords();
-        await this.fetch_forecast();
-    }
-}
+  name: 'App',
+  components: {
+    Widget,
+  },
+  computed: {
+    ...mapState({
+      isLoad: (state) => state.weather.isLoad,
+    }),
+    ...mapGetters({
+      get_weather: 'weather/get_weather',
+    }),
+  },
+  methods: {
+    ...mapActions({
+      fetch_forecast: 'weather/fetch_forecast',
+      fetch_coords: 'weather/fetch_coords',
+    }),
+  },
+  async mounted() {
+    await this.fetch_coords();
+    await this.fetch_forecast();
+  },
+};
 </script>
 
 <style scoped lang="scss">

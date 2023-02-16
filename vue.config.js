@@ -1,23 +1,24 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
+
 module.exports = defineConfig({
   transpileDependencies: true,
 
   configureWebpack: {
     optimization: {
-      splitChunks: false
-    }
+      splitChunks: false,
+    },
   },
   filenameHashing: false,
 
   outputDir: './static/widget-app.loc',
   publicPath: process.env.NODE_ENV === 'production'
-      ? '' //static/dist
-      : '/',
+    ? '' // static/dist
+    : '/',
 
   devServer: {
-    port: 8080
+    port: 8080,
   },
-  css: { extract: false } // при сборке не будет выносить css в отдельный файл
+  css: { extract: false }, // при сборке не будет выносить css в отдельный файл
   // css: {
   //   loaderOptions: {
   //     sass: {
@@ -25,4 +26,4 @@ module.exports = defineConfig({
   //     }
   //   }
   // }
-})
+});

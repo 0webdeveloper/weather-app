@@ -52,7 +52,7 @@ export default {
 <style scoped lang="scss">
 .widget-title {
     font-size: 2rem;
-    font-weigth: 700;
+    font-weight: 700;
 }
 .container-cards {
     display: grid;

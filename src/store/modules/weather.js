@@ -39,7 +39,7 @@ const mutations = {
 
     if (state.weather.length < 3) {
       // не больше 3 виджетов
-      state.weather.push(weatherObj)
+      state.weather = [weatherObj, ...state.weather];
       localStorage.setItem('weather', JSON.stringify(state.weather))
     }
   },

@@ -92,6 +92,7 @@ export default {
         array.splice(oldIndex, 1)
         this.$store.commit('weather/reorder_city', array)
       }
+        this.$emit('closeSetting')
     },
     delete_card(id, index) {
       this.listData.splice(index, 1)

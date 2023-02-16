@@ -76,15 +76,15 @@
 </template>
 
 <script>
-import CardSettings from '@/components/CardSettings.vue';
+import CardSettings from "@/components/CardSettings.vue";
 
 export default {
-  name: 'Widget-card',
+  name: "Widget-card",
   data() {
     return {
       isVisible: false,
-      dataToday: '',
-      timestamp: '',
+      dataToday: "",
+      timestamp: "",
     };
   },
   components: { CardSettings },
@@ -98,26 +98,26 @@ export default {
       this.isVisible = !this.isVisible;
     },
     delete_card(id) {
-      this.$store.commit('weather/remove_city', id);
+      this.$store.commit("weather/remove_city", id);
     },
     getDayOfWeek() {
       const weekDays = [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
       ];
       return weekDays[new Date().getDay()];
     },
     getNow() {
       const date = new Date();
       const result = date.toLocaleDateString({
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       });
       this.timestamp = result;
     },
@@ -155,7 +155,7 @@ export default {
   width: 50%;
 }
 .weather-body__temp {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 3.5rem;
   white-space: nowrap;
   font-weight: 500;

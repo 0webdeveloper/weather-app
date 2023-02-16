@@ -28,18 +28,18 @@
 
 <script>
 export default {
-  name: 'Widget-input',
+  name: "Widget-input",
   data() {
     return {
-      city_name: '',
+      city_name: "",
     };
   },
   methods: {
     send_new_city() {
-      if (this.city_name !== '') {
-        this.$emit('closeSettings');
-        this.$store.dispatch('weather/set_new_city', this.city_name);
-        this.city_name = '';
+      if (this.city_name !== "") {
+        this.$emit("closeSettings");
+        this.$store.dispatch("weather/set_new_city", this.city_name);
+        this.city_name = "";
       }
     },
   },

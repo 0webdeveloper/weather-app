@@ -1,6 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import weather from './modules/weather';
+import Vue from "vue";
+import Vuex from "vuex";
+import weather from "./modules/weather";
 
 Vue.use(Vuex);
 

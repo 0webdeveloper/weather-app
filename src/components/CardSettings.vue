@@ -68,10 +68,9 @@
 </template>
 
 <script>
-// eslint-disable-next-line import/no-unresolved
-import Sortable from 'vue-drag-sortable';
-import WidgetInput from '@/components/Widget-input.vue';
-import { mapGetters } from 'vuex';
+import Sortable from "vue-drag-sortable";
+import WidgetInput from "@/components/Widget-input.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -85,8 +84,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      listData: 'weather/get_weather',
-      watch_city_length: 'weather/watch_city_length',
+      listData: "weather/get_weather",
+      watch_city_length: "weather/watch_city_length",
     }),
   },
   methods: {
@@ -98,17 +97,17 @@ export default {
       if (oldIndex > newIndex) {
         array.splice(newIndex, 0, array[oldIndex]);
         array.splice(oldIndex + 1, 1);
-        this.$store.commit('weather/reorder_city', array);
+        this.$store.commit("weather/reorder_city", array);
       } else {
         array.splice(newIndex + 1, 0, array[oldIndex]);
         array.splice(oldIndex, 1);
-        this.$store.commit('weather/reorder_city', array);
+        this.$store.commit("weather/reorder_city", array);
       }
-      this.$emit('closeSetting');
+      this.$emit("closeSetting");
     },
     delete_card(id, index) {
       this.listData.splice(index, 1);
-      this.$emit('delete_card', id);
+      this.$emit("delete_card", id);
     },
   },
 };
